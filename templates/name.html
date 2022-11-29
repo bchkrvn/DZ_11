@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Все кандидаты с именем {{candidate_name}}
+{% endblock %}
+
+{% block body%}
+{%if candidates%}
+    <h3>Все кандидаты с именем {{candidate_name}}</h3>
+    {%for candidate in candidates%}
+        <h1>{{candidate.get_name()}}</h1>
+        <p><strong>Позиция кандидата:</strong> {{candidate.get_position()}}</p>
+        <img src="{{candidate.get_picture()}}" width=200/>
+        <p><strong>Навыки кандидата:</strong></p>
+        <ol>
+            {%for skill in candidate.get_skills() %}
+            <li>{{skill}}</li>
+            {% endfor %}
+        </ol>
+        <hr align="left" width="400">
+    {% endfor %}
+{%else%}
+    <h3>Кандидатов с именем {{candidate_name}} не найдено!</h3>
+{% endif %}
+<p><a href="/">Вернуться к списку кандидатов</a></p>
+{% endblock %}

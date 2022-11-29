@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Информация о кандидате
+{% endblock %}
+
+{% block body%}
+<h1>{{candidate.get_name()}}</h1>
+<p><strong>Позиция кандидата:</strong> {{candidate.get_position()}}</p>
+<img src="{{candidate.get_picture()}}" width=200/>
+<p><strong>Навыки кандидата:</strong></p>
+<ol>
+    {%for skill in candidate.get_skills() %}
+    <li>{{skill}}</li>
+    {% endfor %}
+</ol>
+<hr align="left" width="400">
+<p><a href="/">Вернуться к списку кандидатов</a></p>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Все кандидаты
+{% endblock %}
+
+{% block body%}
+<h3>Все кандидаты</h3>
+{%for candidate in candidates.values()%}
+    <p><a href="/candidate/{{candidate.get_id()}}">{{candidate.get_name()}}</a></p>
+{% endfor %}
+{% endblock %}
